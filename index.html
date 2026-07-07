@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>InsightSphere | Multi-Tenant Analytics Platform</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f8fafc;
+    color:#1e293b;
+}
+
+/* NAVBAR */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:white;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo{
+    font-size:30px;
+    font-weight:700;
+    background:linear-gradient(90deg,#2563eb,#7c3aed);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#334155;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    color:#2563eb;
+}
+
+.login-btn{
+    background:linear-gradient(90deg,#2563eb,#7c3aed);
+    color:white;
+    border:none;
+    padding:12px 24px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+/* HERO */
+
+.hero{
+    padding:80px 8%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+    flex-wrap:wrap;
+}
+
+.hero-left{
+    flex:1;
+    min-width:320px;
+}
+
+.hero-left h1{
+    font-size:58px;
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.hero-left span{
+    background:linear-gradient(90deg,#2563eb,#7c3aed);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero-left p{
+    font-size:18px;
+    color:#64748b;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.primary-btn{
+    background:linear-gradient(90deg,#2563eb,#7c3aed);
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+}
+
+.secondary-btn{
+    background:white;
+    border:2px solid #2563eb;
+    color:#2563eb;
+    padding:15px 30px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* WORKSPACE PREVIEW */
+
+.hero-right{
+    flex:1;
+    min-width:320px;
+}
+
+.dashboard{
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.08);
+}
+
+.dashboard h3{
+    margin-bottom:20px;
+    color:#2563eb;
+}
+
+.workspace-card{
+    background:#f8fafc;
+    border-left:5px solid #2563eb;
+    padding:18px;
+    margin-bottom:15px;
+    border-radius:12px;
+    transition:0.3s;
+}
+
+.workspace-card:hover{
+    transform:translateX(8px);
+    background:#eff6ff;
+}
+
+.workspace-card h4{
+    margin-bottom:8px;
+    color:#2563eb;
+}
+
+.workspace-card p{
+    color:#64748b;
+    font-size:14px;
+}
+
+/* FEATURES */
+
+.features{
+    padding:90px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.section-subtitle{
+    text-align:center;
+    color:#64748b;
+    margin-bottom:50px;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.feature-card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+    transition:0.3s;
+}
+
+.feature-card:hover{
+    transform:translateY(-10px);
+}
+
+.feature-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.feature-card h3{
+    margin-bottom:10px;
+}
+
+.feature-card p{
+    color:#64748b;
+}
+
+/* HOW IT WORKS */
+
+.workflow{
+    padding:90px 8%;
+    background:white;
+}
+
+.steps{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+    margin-top:50px;
+}
+
+.step{
+    width:230px;
+    background:#f8fafc;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+}
+
+.step-number{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#2563eb;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    margin-bottom:15px;
+    font-weight:bold;
+}
+
+/* MODULES */
+
+.modules{
+    padding:90px 8%;
+}
+
+.module-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.module-card{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 10px 20px rgba(0,0,0,0.05);
+}
+
+.module-card h3{
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+.module-card p{
+    color:#64748b;
+}
+
+/* CTA */
+
+.cta{
+    padding:100px 8%;
+    text-align:center;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+}
+
+.cta h2{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.cta p{
+    margin-bottom:30px;
+    font-size:18px;
+}
+
+.cta button{
+    background:white;
+    color:#2563eb;
+    border:none;
+    padding:15px 35px;
+    border-radius:10px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.hero{
+    flex-direction:column;
+}
+
+.hero-left h1{
+    font-size:42px;
+}
+
+.nav-links{
+    display:none;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+
+<div class="logo">InsightSphere</div>
+
+<div class="nav-links">
+<a href="#features">Features</a>
+<a href="#workflow">How It Works</a>
+<a href="#modules">Modules</a>
+<a href="#contact">Contact</a>
+</div>
+
+<button class="login-btn" onclick="goLogin()">
+Login
+</button>
+
+</nav>
+
+<section class="hero">
+
+<div class="hero-left">
+
+<h1>
+Business Analytics
+<span>Made Simple</span>
+</h1>
+
+<p>
+Upload business data, create reports, build dashboards,
+and collaborate securely across multiple organizations
+using one powerful analytics platform.
+</p>
+
+<div class="hero-buttons">
+
+<button class="primary-btn" onclick="goLogin()">
+Get Started
+</button>
+
+
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<div class="dashboard">
+
+<h3>Organization Workspace</h3>
+
+<div class="workspace-card">
+<h4>📁 Upload Business Data</h4>
+<p>Import Excel, CSV files, APIs, or database connections.</p>
+</div>
+
+<div class="workspace-card">
+<h4>📊 Create Dashboards</h4>
+<p>Visualize KPIs, trends, and business performance.</p>
+</div>
+
+<div class="workspace-card">
+<h4>📄 Generate Reports</h4>
+<p>Build custom reports and export them as PDF or Excel.</p>
+</div>
+
+<div class="workspace-card">
+<h4>👥 Collaborate Securely</h4>
+<p>Share reports with team members using role-based access.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="features" id="features">
+
+<h2 class="section-title">Platform Features</h2>
+
+<p class="section-subtitle">
+Everything needed to manage analytics in one place
+</p>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+<div class="feature-icon">📁</div>
+<h3>Data Import</h3>
+<p>Upload Excel, CSV files and connect external systems.</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">📊</div>
+<h3>Interactive Dashboards</h3>
+<p>Track performance with visual charts and KPI cards.</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">📄</div>
+<h3>Report Builder</h3>
+<p>Create and schedule reports for your organization.</p>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon">🔒</div>
+<h3>Secure Multi-Tenant</h3>
+<p>Each organization accesses only its own data.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="workflow" id="workflow">
+
+<h2 class="section-title">How It Works</h2>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-number">1</div>
+<h3>Upload Data</h3>
+<p>Add Excel, CSV, API or database data.</p>
+</div>
+
+<div class="step">
+<div class="step-number">2</div>
+<h3>Analyze</h3>
+<p>Process and organize business information.</p>
+</div>
+
+<div class="step">
+<div class="step-number">3</div>
+<h3>Create Reports</h3>
+<p>Generate custom reports and dashboards.</p>
+</div>
+
+<div class="step">
+<div class="step-number">4</div>
+<h3>Share Insights</h3>
+<p>Collaborate securely with your team.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="modules" id="modules">
+
+<h2 class="section-title">Platform Modules</h2>
+
+<p class="section-subtitle">
+Core modules available after login
+</p>
+
+<div class="module-grid">
+
+<div class="module-card">
+<h3>Dashboard</h3>
+<p>Overview of analytics and activities.</p>
+</div>
+
+<div class="module-card">
+<h3>Data Sources</h3>
+<p>Manage uploaded business datasets.</p>
+</div>
+
+<div class="module-card">
+<h3>Report Builder</h3>
+<p>Create custom reports and exports.</p>
+</div>
+
+<div class="module-card">
+<h3>Analytics</h3>
+<p>Visual insights and business intelligence.</p>
+</div>
+
+<div class="module-card">
+<h3>Team Management</h3>
+<p>Invite users and assign permissions.</p>
+</div>
+
+<div class="module-card">
+<h3>Billing</h3>
+<p>Subscription and usage management.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="cta" id="contact">
+
+<h2>Ready To Build Your Analytics Workspace?</h2>
+
+<p>
+Create your organization and start generating reports today.
+</p>
+
+<button onclick="goLogin()">
+Create Workspace
+</button>
+
+</section>
+
+<footer>
+© 2026 InsightSphere Analytics Platform
+</footer>
+
+<script>
+
+function goLogin(){
+    window.location.href = "login.html";
+}
+
+</script>
+
+</body>
+</html>

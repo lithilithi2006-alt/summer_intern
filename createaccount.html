@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Workspace | InsightSphere</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+min-height:100vh;
+padding:40px 20px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+background:white;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 20px 50px rgba(0,0,0,0.15);
+display:flex;
+flex-wrap:wrap;
+}
+
+.left-panel{
+flex:1;
+min-width:320px;
+padding:50px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:white;
+}
+
+.left-panel h1{
+font-size:42px;
+margin-bottom:20px;
+}
+
+.left-panel p{
+line-height:1.8;
+opacity:0.95;
+margin-bottom:30px;
+}
+
+.benefits div{
+margin-bottom:15px;
+font-size:15px;
+}
+
+.right-panel{
+flex:1.4;
+padding:50px;
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+margin-bottom:10px;
+background:linear-gradient(90deg,#2563eb,#7c3aed);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.section-title{
+margin-top:25px;
+margin-bottom:15px;
+color:#1e293b;
+}
+
+.form-grid{+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.input-group{
+margin-bottom:15px;
+}
+
+.input-group label{
+display:block;
+margin-bottom:8px;
+font-weight:500;
+}
+
+.input-group input,
+.input-group select{
+width:100%;
+padding:14px;
+border:1px solid #cbd5e1;
+border-radius:10px;
+outline:none;
+}
+
+.input-group input:focus,
+.input-group select:focus{
+border-color:#2563eb;
+}
+
+.plan-container{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-top:10px;
+}
+
+.plan-card{
+border:2px solid #e2e8f0;
+padding:20px;
+border-radius:15px;
+cursor:pointer;
+text-align:center;
+transition:0.3s;
+}
+
+.plan-card:hover{
+border-color:#2563eb;
+transform:translateY(-3px);
+}
+
+.plan-card.selected{
+border-color:#2563eb;
+background:#eff6ff;
+}
+
+.plan-card h3{
+color:#2563eb;
+margin-bottom:10px;
+}
+
+.plan-card p{
+font-size:13px;
+color:#64748b;
+}
+
+.terms{
+margin-top:25px;
+display:flex;
+align-items:center;
+gap:10px;
+font-size:14px;
+}
+
+.create-btn{
+width:100%;
+margin-top:25px;
+padding:16px;
+border:none;
+border-radius:12px;
+background:linear-gradient(90deg,#2563eb,#7c3aed);
+color:white;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+}
+
+.create-btn:hover{
+opacity:0.95;
+}
+
+@media(max-width:900px){
+
+.container{
+flex-direction:column;
+}
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.plan-container{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="left-panel">
+
+<h1>Create Your Workspace</h1>
+
+<p>
+Set up your organization’s analytics workspace and start uploading data,
+building dashboards, generating reports, and collaborating with your team.
+</p>
+
+<div class="benefits">
+<div>✓ Secure Multi-Tenant Architecture</div>
+<div>✓ Custom Dashboards & Reports</div>
+<div>✓ Team Collaboration</div>
+<div>✓ Role-Based Access Control</div>
+<div>✓ Data Import from Multiple Sources</div>
+<div>✓ Usage-Based Subscription Plans</div>
+</div>
+
+</div>
+
+<div class="right-panel">
+
+<div class="logo">InsightSphere</div>
+
+<h2>Create Workspace Account</h2>
+
+<h3 class="section-title">Admin Information</h3>
+
+<div class="form-grid">
+
+<div class="input-group">
+<label>Full Name</label>
+<input type="text" placeholder="Enter full name">
+</div>
+
+<div class="input-group">
+<label>Work Email</label>
+<input type="email" placeholder="Enter work email">
+</div>
+
+<div class="input-group">
+<label>Password</label>
+<input type="password" placeholder="Create password">
+</div>
+
+<div class="input-group">
+<label>Confirm Password</label>
+<input type="password" placeholder="Confirm password">
+</div>
+
+</div>
+
+<h3 class="section-title">Organization Information</h3>
+
+<div class="form-grid">
+
+<div class="input-group">
+<label>Organization Name</label>
+<input type="text" placeholder="Company name">
+</div>
+
+<div class="input-group">
+<label>Industry</label>
+<select>
+<option>Select Industry</option>
+<option>Software</option>
+<option>Retail</option>
+<option>Finance</option>
+<option>Healthcare</option>
+<option>Education</option>
+<option>Manufacturing</option>
+</select>
+</div>
+
+<div class="input-group">
+<label>Organization Size</label>
+<select>
+<option>Select Size</option>
+<option>1 - 10 Employees</option>
+<option>11 - 50 Employees</option>
+<option>51 - 100 Employees</option>
+<option>101 - 500 Employees</option>
+<option>500+ Employees</option>
+</select>
+</div>
+
+<div class="input-group">
+<label>Country</label>
+<select>
+<option>Select Country</option>
+<option>India</option>
+<option>United States</option>
+<option>United Kingdom</option>
+<option>Australia</option>
+<option>Canada</option>
+</select>
+</div>
+
+</div>
+
+<h3 class="section-title">Choose a Plan</h3>
+
+<div class="plan-container">
+
+<div class="plan-card" onclick="selectPlan(this)">
+<h3>Starter</h3>
+<p>Up to 10 users<br>Basic Reporting</p>
+</div>
+
+<div class="plan-card" onclick="selectPlan(this)">
+<h3>Professional</h3>
+<p>Up to 100 users<br>Advanced Analytics</p>
+</div>
+
+<div class="plan-card" onclick="selectPlan(this)">
+<h3>Enterprise</h3>
+<p>Unlimited Users<br>Custom Features</p>
+</div>
+
+</div>
+
+<div class="terms">
+<input type="checkbox">
+<label>I agree to the Terms & Conditions</label>
+</div>
+
+<button class="create-btn" onclick="createWorkspace()">
+Create Workspace
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function selectPlan(card){
+
+document.querySelectorAll('.plan-card').forEach(item=>{
+item.classList.remove('selected');
+});
+
+card.classList.add('selected');
+
+}
+
+function createWorkspace(){
+
+window.location.href="login.html";
+
+}
+
+</script>
+
+</body>
+</html>
