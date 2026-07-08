@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard | InsightSphere</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f8fafc;
+display:flex;
+min-height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:260px;
+background:linear-gradient(180deg,#2563eb,#7c3aed);
+color:white;
+padding:25px;
+position:fixed;
+height:100%;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+margin-bottom:40px;
+}
+
+.menu a{
+display:block;
+padding:14px;
+margin-bottom:10px;
+text-decoration:none;
+color:white;
+border-radius:10px;
+transition:0.3s;
+}
+
+.menu a:hover{
+background:rgba(255,255,255,0.15);
+}
+
+.active{
+background:rgba(255,255,255,0.2);
+}
+
+/* Main */
+
+.main{
+margin-left:260px;
+flex:1;
+padding:30px;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+.workspace{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.workspace h1{
+margin-bottom:10px;
+}
+
+.workspace p{
+color:#64748b;
+}
+
+/* Quick Actions */
+
+.section-title{
+margin:30px 0 20px;
+}
+
+.actions{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+transition:0.3s;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card h3{
+margin-bottom:10px;
+color:#2563eb;
+}
+
+.card p{
+color:#64748b;
+font-size:14px;
+}
+
+/* Activity */
+
+.activity{
+margin-top:30px;
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.activity-item{
+padding:15px;
+background:#f8fafc;
+border-radius:10px;
+margin-top:10px;
+}
+
+.activity-item p{
+color:#64748b;
+}
+
+/* Empty State */
+
+.empty-state{
+margin-top:30px;
+padding:40px;
+text-align:center;
+background:white;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.empty-state h2{
+margin-bottom:10px;
+}
+
+.empty-state p{
+color:#64748b;
+margin-bottom:20px;
+}
+
+.btn{
+padding:12px 25px;
+border:none;
+border-radius:10px;
+background:linear-gradient(90deg,#2563eb,#7c3aed);
+color:white;
+cursor:pointer;
+font-weight:600;
+}
+
+/* Mobile */
+
+@media(max-width:900px){
+
+.sidebar{
+position:relative;
+width:100%;
+height:auto;
+}
+
+.main{
+margin-left:0;
+}
+
+body{
+flex-direction:column;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="sidebar">
+
+<div class="logo">
+InsightSphere
+</div>
+
+<div class="menu">
+
+<a href="dashboard.html" class="active">🏠 Dashboard</a>
+
+<a href="datasources.html">📁 Data Sources</a>
+
+<a href="reportbuilder.html">📄 Report Builder</a>
+
+<a href="analytics.html">📊 Analytics</a>
+
+<a href="team.html">👥 Team Management</a>
+
+<a href="billing.html">💳 Billing</a>
+
+<a href="settings.html">⚙ Settings</a>
+
+<a href="index.html">🚪 Logout</a>
+
+</div>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<div>
+<h2>Workspace Dashboard</h2>
+<p>ABC Technologies</p>
+</div>
+
+</div>
+
+<div class="workspace">
+
+<h1>Welcome to Your Analytics Workspace</h1>
+
+<p>
+Your organization has been created successfully.
+Start by uploading your first dataset to generate reports and analytics.
+</p>
+
+</div>
+
+<h2 class="section-title">Quick Actions</h2>
+
+<div class="actions">
+
+<div class="card"
+onclick="location.href='datasources.html'">
+
+<h3>📁 Upload Data</h3>
+
+<p>
+Import Excel, CSV files, APIs or databases.
+</p>
+
+</div>
+
+<div class="card"
+onclick="location.href='reportbuilder.html'">
+
+<h3>📄 Create Report</h3>
+
+<p>
+Build custom reports and export them.
+</p>
+
+</div>
+
+<div class="card"
+onclick="location.href='analytics.html'">
+
+<h3>📊 View Analytics</h3>
+
+<p>
+Explore dashboards and business insights.
+</p>
+
+</div>
+
+<div class="card"
+onclick="location.href='team.html'">
+
+<h3>👥 Invite Team</h3>
+
+<p>
+Add members and assign permissions.
+</p>
+
+</div>
+
+</div>
+
+<div class="empty-state">
+
+<h2>No Data Available Yet</h2>
+
+<p>
+Upload your first dataset to start creating reports and dashboards.
+</p>
+
+<button class="btn"
+onclick="location.href='datasources.html'">
+Upload First Dataset </button>
+
+</div>
+
+<div class="activity">
+
+<h2>Recent Activity</h2>
+
+<div class="activity-item">
+<strong>Workspace Created</strong>
+<p>Your organization workspace is ready.</p>
+</div>
+
+<div class="activity-item">
+<strong>Next Step</strong>
+<p>Upload data to unlock analytics and reporting features.</p>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
