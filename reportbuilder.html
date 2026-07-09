@@ -1,0 +1,1307 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Professional Report Builder | InsightSphere</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f1f5f9;
+display:flex;
+min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:260px;
+background:linear-gradient(180deg,#2563eb,#7c3aed);
+padding:25px;
+color:white;
+position:fixed;
+height:100%;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+margin-bottom:40px;
+}
+
+.menu a{
+display:block;
+padding:14px;
+margin-bottom:10px;
+color:white;
+text-decoration:none;
+border-radius:12px;
+transition:.3s;
+}
+
+.menu a:hover{
+background:rgba(255,255,255,.15);
+}
+
+.active{
+background:rgba(255,255,255,.20);
+}
+
+/* MAIN */
+
+.main{
+flex:1;
+margin-left:260px;
+padding:30px;
+}
+
+.header{
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+margin-bottom:25px;
+}
+
+.header h1{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.header p{
+color:#64748b;
+}
+
+/* FORM */
+
+.builder-card{
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+margin-bottom:25px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+}
+
+.input-group label{
+display:block;
+margin-bottom:8px;
+font-weight:600;
+}
+
+.input-group input,
+.input-group select{
+width:100%;
+padding:14px;
+border:1px solid #cbd5e1;
+border-radius:10px;
+}
+
+.generate-btn{
+margin-top:20px;
+padding:14px 30px;
+border:none;
+border-radius:12px;
+background:linear-gradient(90deg,#2563eb,#7c3aed);
+color:white;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+}
+
+/* PREVIEW */
+
+.preview-box{
+margin-top:20px;
+padding:20px;
+border-radius:15px;
+background:#f8fafc;
+border:1px solid #e2e8f0;
+max-height:220px;
+overflow:auto;
+}
+
+/* REPORT AREA */
+
+.reports-section{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.report-document{
+margin-top:25px;
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.report-header{
+padding:25px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:white;
+}
+
+.report-header h2{
+margin-bottom:10px;
+}
+
+.report-body{
+padding:25px;
+}
+
+.kpi-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-top:20px;
+margin-bottom:25px;
+}
+
+.kpi-card{
+padding:20px;
+border-radius:15px;
+background:#f8fafc;
+}
+
+.kpi-card h4{
+color:#64748b;
+font-size:13px;
+margin-bottom:8px;
+}
+
+.kpi-card h2{
+color:#2563eb;
+}
+
+.section-box{
+background:#f8fafc;
+padding:20px;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+.section-box h3{
+margin-bottom:15px;
+color:#2563eb;
+}
+
+.actions{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.action-btn{
+border:none;
+padding:12px 18px;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+}
+
+.pdf-btn{
+background:#fee2e2;
+color:#b91c1c;
+}
+
+.delete-btn{
+background:#e2e8f0;
+}
+
+.empty{
+text-align:center;
+padding:40px;
+color:#64748b;
+}
+
+@media(max-width:900px){
+
+.sidebar{
+position:relative;
+width:100%;
+height:auto;
+}
+
+.main{
+margin-left:0;
+}
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.kpi-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<div class="logo">InsightSphere</div>
+
+<div class="menu">
+
+<a href="dashboard.html">🏠 Dashboard</a>
+<a href="datasources.html">📁 Data Sources</a>
+<a href="reportbuilder.html" class="active">📄 Report Builder</a>
+<a href="analytics.html">📊 Analytics</a>
+<a href="team.html">👥 Team Management</a>
+<a href="billing.html">💳 Billing</a>
+<a href="settings.html">⚙ Settings</a>
+
+</div>
+
+</div>
+
+<div class="main">
+
+<div class="header">
+
+<h1>Business Report Builder</h1>
+
+<p>
+Generate executive business reports from uploaded datasets.
+</p>
+
+</div>
+
+<div class="builder-card">
+
+<div class="form-grid">
+
+<div class="input-group">
+<label>Dataset</label>
+<select id="dataset"></select>
+</div>
+
+<div class="input-group">
+<label>Report Title</label>
+<input type="text" id="title">
+</div>
+
+<div class="input-group">
+<label>Chart Type</label>
+<select id="chart">
+<option>Bar Chart</option>
+<option>Pie Chart</option>
+<option>Line Chart</option>
+<option>Table View</option>
+</select>
+</div>
+
+<div class="input-group">
+<label>Date</label>
+<input type="text" id="generatedDate" readonly>
+</div>
+
+</div>
+
+<button class="generate-btn"
+onclick="generateReport()">
+Generate Professional Report
+</button>
+
+<div id="previewBox"
+class="preview-box">
+Dataset preview will appear here...
+</div>
+
+</div>
+
+<div class="reports-section">
+
+<h2>Generated Reports</h2>
+
+<div id="reportsContainer">
+
+<div class="empty">
+No Reports Generated Yet
+</div>
+
+</div>
+
+</div>
+
+</div>
+```
+```html id="j6pr4n"
+<script>
+
+const datasetSelect =
+document.getElementById("dataset");
+
+const previewBox =
+document.getElementById("previewBox");
+
+const reportsContainer =
+document.getElementById("reportsContainer");
+
+document.getElementById(
+"generatedDate"
+).value =
+new Date().toLocaleDateString();
+
+/* PAGE LOAD */
+
+window.onload = () => {
+
+loadDatasets();
+loadReports();
+
+};
+
+/* LOAD DATASETS */
+
+function loadDatasets(){
+
+const datasets =
+JSON.parse(
+localStorage.getItem(
+"uploadedDatasets"
+)
+) || [];
+
+datasetSelect.innerHTML = "";
+
+if(datasets.length===0){
+
+datasetSelect.innerHTML =
+"<option>No Dataset Available</option>";
+
+previewBox.innerHTML =
+"No dataset uploaded.";
+
+return;
+
+}
+
+datasets.forEach(dataset=>{
+
+const option =
+document.createElement("option");
+
+option.value =
+dataset.name;
+
+option.textContent =
+dataset.name;
+
+datasetSelect.appendChild(
+option
+);
+
+});
+
+showPreview();
+
+}
+
+/* DATASET PREVIEW */
+
+datasetSelect.addEventListener(
+"change",
+showPreview
+);
+
+function showPreview(){
+
+const datasets =
+JSON.parse(
+localStorage.getItem(
+"uploadedDatasets"
+)
+) || [];
+
+const dataset =
+datasets.find(
+d=>d.name===datasetSelect.value
+);
+
+if(!dataset){
+
+previewBox.innerHTML =
+"No Preview Available";
+
+return;
+
+}
+
+previewBox.innerHTML =
+
+`
+<b>Dataset:</b> ${dataset.name}
+
+<br><br>
+
+<b>Uploaded:</b>
+${dataset.uploadedAt || "N/A"}
+
+<br><br>
+
+<b>Preview:</b>
+
+<br><br>
+
+${(dataset.content || "")
+.substring(0,1000)}
+`;
+
+}
+
+/* GENERATE REPORT */
+
+function generateReport(){
+
+const title =
+document.getElementById(
+"title"
+).value;
+
+const datasetName =
+datasetSelect.value;
+
+const chart =
+document.getElementById(
+"chart"
+).value;
+
+if(title.trim()===""){
+
+alert(
+"Enter Report Title"
+);
+
+return;
+
+}
+
+const datasets =
+JSON.parse(
+localStorage.getItem(
+"uploadedDatasets"
+)
+) || [];
+
+const dataset =
+datasets.find(
+d=>d.name===datasetName
+);
+
+if(!dataset){
+
+alert(
+"Dataset Not Found"
+);
+
+return;
+
+}
+
+const csv =
+dataset.content || "";
+
+const rows =
+csv.trim().split("\n");
+
+const headers =
+rows[0].split(",");
+
+const totalRecords =
+rows.length - 1;
+
+const totalColumns =
+headers.length;
+
+let totalSales = 0;
+let totalProfit = 0;
+
+for(
+let i=1;
+i<rows.length;
+i++
+){
+
+const cols =
+rows[i].split(",");
+
+if(cols.length >= 8){
+
+totalSales +=
+Number(cols[6]) || 0;
+
+totalProfit +=
+Number(cols[7]) || 0;
+
+}
+
+}
+
+const avgSales =
+totalRecords > 0
+?
+Math.round(
+totalSales /
+totalRecords
+)
+:
+0;
+
+const report = {
+
+title:title,
+
+dataset:datasetName,
+
+chart:chart,
+
+created:
+new Date()
+.toLocaleString(),
+
+records:
+totalRecords,
+
+columns:
+totalColumns,
+
+sales:
+totalSales,
+
+profit:
+totalProfit,
+
+avgSales:
+avgSales
+
+};
+
+let reports =
+JSON.parse(
+localStorage.getItem(
+"generatedReports"
+)
+) || [];
+
+reports.unshift(
+report
+);
+
+localStorage.setItem(
+"generatedReports",
+JSON.stringify(reports)
+);
+
+loadReports();
+
+document.getElementById(
+"title"
+).value = "";
+
+alert(
+"Professional Report Generated Successfully"
+);
+
+}
+
+/* LOAD REPORTS */
+
+function loadReports(){
+
+const reports =
+JSON.parse(
+localStorage.getItem(
+"generatedReports"
+)
+) || [];
+
+if(reports.length===0){
+
+reportsContainer.innerHTML =
+
+`
+<div class="empty">
+No Reports Generated Yet
+</div>
+`;
+
+return;
+
+}
+
+reportsContainer.innerHTML = "";
+
+reports.forEach(
+(report,index)=>{
+
+const div =
+document.createElement("div");
+
+div.className =
+"report-document";
+
+div.innerHTML =
+
+`
+
+<div class="report-header">
+
+<h2>
+📄 ${report.title}
+</h2>
+
+<div>
+Generated:
+${report.created}
+</div>
+
+</div>
+
+<div class="report-body">
+
+<h3>
+Executive Summary
+</h3>
+
+<p style="margin-top:10px;color:#64748b;line-height:1.8;">
+
+This report was generated using
+<b>${report.dataset}</b>.
+
+The dataset contains
+<b>${report.records}</b>
+records and
+<b>${report.columns}</b>
+columns.
+
+</p>
+
+<div class="kpi-grid">
+
+<div class="kpi-card">
+<h4>Total Sales</h4>
+<h2>
+₹${report.sales.toLocaleString()}
+</h2>
+</div>
+
+<div class="kpi-card">
+<h4>Total Profit</h4>
+<h2>
+₹${report.profit.toLocaleString()}
+</h2>
+</div>
+
+<div class="kpi-card">
+<h4>Total Orders</h4>
+<h2>
+${report.records}
+</h2>
+</div>
+
+<div class="kpi-card">
+<h4>Average Sales</h4>
+<h2>
+₹${report.avgSales.toLocaleString()}
+</h2>
+</div>
+
+</div>
+
+<div class="section-box">
+
+<h3>
+Dataset Information
+</h3>
+
+<p>
+<b>Dataset:</b>
+${report.dataset}
+</p>
+
+<p>
+<b>Chart Type:</b>
+${report.chart}
+</p>
+
+<p>
+<b>Total Columns:</b>
+${report.columns}
+</p>
+
+<p>
+<b>Total Records:</b>
+${report.records}
+</p>
+
+</div>
+
+<div class="section-box">
+
+<h3>
+Business Insights
+</h3>
+
+<ul style="padding-left:20px;line-height:2;">
+
+<li>
+Total Sales Generated:
+₹${report.sales.toLocaleString()}
+</li>
+
+<li>
+Total Profit Generated:
+₹${report.profit.toLocaleString()}
+</li>
+
+<li>
+Average Sales:
+₹${report.avgSales.toLocaleString()}
+</li>
+
+<li>
+Dataset contains
+${report.records}
+records.
+</li>
+
+</ul>
+
+</div>
+
+<div class="actions">
+
+<button
+class="action-btn pdf-btn"
+onclick="downloadPDF(${index})">
+📥 Download PDF
+</button>
+
+<button
+class="action-btn delete-btn"
+onclick="deleteReport(${index})">
+🗑 Delete
+</button>
+
+</div>
+
+</div>
+
+`;
+
+reportsContainer.appendChild(
+div
+);
+
+});
+
+}
+
+function downloadPDF(index){
+
+const reports =
+JSON.parse(
+localStorage.getItem(
+"generatedReports"
+)
+) || [];
+
+const report =
+reports[index];
+
+const { jsPDF } =
+window.jspdf;
+
+const doc =
+new jsPDF();
+
+const pageWidth =
+doc.internal.pageSize.width;
+
+/* HEADER */
+
+doc.setFillColor(
+37,
+99,
+235
+);
+
+doc.rect(
+0,
+0,
+pageWidth,
+40,
+'F'
+);
+
+doc.setTextColor(
+255,
+255,
+255
+);
+
+doc.setFontSize(
+24
+);
+
+doc.text(
+"InsightSphere",
+20,
+18
+);
+
+doc.setFontSize(
+12
+);
+
+doc.text(
+"Business Intelligence Report",
+20,
+28
+);
+
+/* REPORT TITLE */
+
+doc.setTextColor(
+0,
+0,
+0
+);
+
+doc.setFontSize(
+22
+);
+
+doc.text(
+report.title,
+20,
+55
+);
+
+doc.setDrawColor(
+220,
+220,
+220
+);
+
+doc.line(
+20,
+60,
+190,
+60
+);
+
+/* EXECUTIVE SUMMARY */
+
+doc.setFontSize(
+16
+);
+
+doc.text(
+"Executive Summary",
+20,
+75
+);
+
+doc.setFontSize(
+11
+);
+
+doc.text(
+"This report provides a business overview generated from the selected dataset.",
+20,
+85
+);
+
+/* KPI BOXES */
+
+doc.setFillColor(
+239,
+246,
+255
+);
+
+doc.roundedRect(
+20,
+100,
+75,
+25,
+3,
+3,
+'F'
+);
+
+doc.text(
+"Total Sales",
+25,
+110
+);
+
+doc.setFontSize(
+14
+);
+
+doc.text(
+"₹" +
+report.sales.toLocaleString(),
+25,
+120
+);
+
+doc.setFontSize(
+11
+);
+
+doc.setFillColor(
+240,
+253,
+244
+);
+
+doc.roundedRect(
+110,
+100,
+75,
+25,
+3,
+3,
+'F'
+);
+
+doc.text(
+"Total Profit",
+115,
+110
+);
+
+doc.setFontSize(
+14
+);
+
+doc.text(
+"₹" +
+report.profit.toLocaleString(),
+115,
+120
+);
+
+doc.setFontSize(
+11
+);
+
+/* SECOND ROW */
+
+doc.setFillColor(
+254,
+252,
+232
+);
+
+doc.roundedRect(
+20,
+135,
+75,
+25,
+3,
+3,
+'F'
+);
+
+doc.text(
+"Orders",
+25,
+145
+);
+
+doc.setFontSize(
+14
+);
+
+doc.text(
+String(report.records),
+25,
+155
+);
+
+doc.setFontSize(
+11
+);
+
+doc.setFillColor(
+250,
+245,
+255
+);
+
+doc.roundedRect(
+110,
+135,
+75,
+25,
+3,
+3,
+'F'
+);
+
+doc.text(
+"Average Sales",
+115,
+145
+);
+
+doc.setFontSize(
+14
+);
+
+doc.text(
+"₹" +
+report.avgSales.toLocaleString(),
+115,
+155
+);
+
+doc.setFontSize(
+11
+);
+
+/* DATASET INFORMATION */
+
+doc.setFontSize(
+16
+);
+
+doc.text(
+"Dataset Information",
+20,
+180
+);
+
+doc.setFontSize(
+11
+);
+
+doc.text(
+"Dataset Name: " +
+report.dataset,
+20,
+192
+);
+
+doc.text(
+"Chart Type: " +
+report.chart,
+20,
+202
+);
+
+doc.text(
+"Generated On: " +
+report.created,
+20,
+212
+);
+
+doc.text(
+"Total Columns: " +
+report.columns,
+20,
+222
+);
+
+doc.text(
+"Total Records: " +
+report.records,
+20,
+232
+);
+
+/* NEW PAGE */
+
+doc.addPage();
+
+/* INSIGHTS */
+
+doc.setFontSize(
+20
+);
+
+doc.text(
+"Business Insights",
+20,
+25
+);
+
+doc.setFontSize(
+12
+);
+
+doc.text(
+"• Total sales generated from dataset:",
+20,
+45
+);
+
+doc.text(
+"₹" +
+report.sales.toLocaleString(),
+120,
+45
+);
+
+doc.text(
+"• Total profit generated:",
+20,
+60
+);
+
+doc.text(
+"₹" +
+report.profit.toLocaleString(),
+120,
+60
+);
+
+doc.text(
+"• Average sales value:",
+20,
+75
+);
+
+doc.text(
+"₹" +
+report.avgSales.toLocaleString(),
+120,
+75
+);
+
+doc.text(
+"• Dataset contains " +
+report.records +
+" business records.",
+20,
+90
+);
+
+/* RECOMMENDATIONS */
+
+doc.setFontSize(
+18
+);
+
+doc.text(
+"Recommendations",
+20,
+120
+);
+
+doc.setFontSize(
+12
+);
+
+doc.text(
+"1. Monitor high-performing products regularly.",
+20,
+140
+);
+
+doc.text(
+"2. Track profit trends and revenue growth.",
+20,
+155
+);
+
+doc.text(
+"3. Use dashboard analytics for forecasting.",
+20,
+170
+);
+
+doc.text(
+"4. Review business KPIs monthly.",
+20,
+185
+);
+
+/* FOOTER */
+
+doc.setFontSize(
+10
+);
+
+doc.setTextColor(
+120
+);
+
+doc.text(
+"Generated by InsightSphere Business Intelligence Platform",
+20,
+270
+);
+
+doc.save(
+report.title
+.replace(/\s+/g,"_")
++
+".pdf"
+);
+
+}
+
+
+
+/* DELETE REPORT */
+
+function deleteReport(index){
+
+let reports =
+JSON.parse(
+localStorage.getItem(
+"generatedReports"
+)
+) || [];
+
+reports.splice(
+index,
+1
+);
+
+localStorage.setItem(
+"generatedReports",
+JSON.stringify(reports)
+);
+
+loadReports();
+
+}
+
+</script>
+
+</body>
+</html>
