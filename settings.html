@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings Center | InsightSphere</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f8fafc;
+display:flex;
+min-height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:260px;
+background:linear-gradient(180deg,#2563eb,#7c3aed);
+color:white;
+padding:25px;
+position:fixed;
+height:100%;
+overflow-y:auto;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+margin-bottom:40px;
+}
+
+.menu a{
+display:block;
+padding:14px;
+margin-bottom:10px;
+color:white;
+text-decoration:none;
+border-radius:10px;
+transition:.3s;
+}
+
+.menu a:hover{
+background:rgba(255,255,255,.15);
+}
+
+.active{
+background:rgba(255,255,255,.2);
+}
+
+/* Main */
+
+.main{
+margin-left:260px;
+padding:30px;
+flex:1;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.header p{
+color:#64748b;
+}
+
+.btn{
+padding:12px 20px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:600;
+color:white;
+background:linear-gradient(90deg,#2563eb,#7c3aed);
+}
+
+.grid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.05);
+margin-bottom:20px;
+}
+
+.card h2{
+margin-bottom:20px;
+font-size:20px;
+}
+
+/* Profile */
+
+.profile{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.avatar{
+width:90px;
+height:90px;
+border-radius:50%;
+background:linear-gradient(90deg,#2563eb,#7c3aed);
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:32px;
+font-weight:700;
+}
+
+.badge{
+display:inline-block;
+padding:6px 12px;
+background:#dcfce7;
+color:#16a34a;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+margin-top:10px;
+}
+
+/* Forms */
+
+.form-group{
+margin-bottom:15px;
+}
+
+.form-group label{
+display:block;
+margin-bottom:8px;
+font-weight:500;
+}
+
+.form-group input,
+.form-group select{
+width:100%;
+padding:12px;
+border:1px solid #ddd;
+border-radius:10px;
+outline:none;
+}
+
+/* Summary */
+
+.summary-row{
+display:flex;
+justify-content:space-between;
+padding:12px 0;
+border-bottom:1px solid #eee;
+}
+
+.summary-row:last-child{
+border-bottom:none;
+}
+
+/* Toggle */
+
+.toggle-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 0;
+border-bottom:1px solid #eee;
+}
+
+.switch{
+position:relative;
+display:inline-block;
+width:50px;
+height:26px;
+}
+
+.switch input{
+display:none;
+}
+
+.slider{
+position:absolute;
+cursor:pointer;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:#cbd5e1;
+border-radius:50px;
+transition:.3s;
+}
+
+.slider:before{
+position:absolute;
+content:"";
+height:20px;
+width:20px;
+left:3px;
+bottom:3px;
+background:white;
+border-radius:50%;
+transition:.3s;
+}
+
+input:checked + .slider{
+background:#2563eb;
+}
+
+input:checked + .slider:before{
+transform:translateX(24px);
+}
+
+/* Danger */
+
+.danger-btn{
+background:#ef4444;
+color:white;
+border:none;
+padding:12px 18px;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* Activity */
+
+.activity-log{
+max-height:250px;
+overflow:auto;
+}
+
+.activity-item{
+background:#f8fafc;
+padding:12px;
+border-radius:10px;
+margin-top:10px;
+}
+
+/* Mobile */
+
+@media(max-width:900px){
+
+.sidebar{
+position:relative;
+width:100%;
+height:auto;
+}
+
+.main{
+margin-left:0;
+}
+
+body{
+flex-direction:column;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+
+<div class="logo">InsightSphere</div>
+
+<div class="menu">
+<a href="dashboard.html">🏠 Dashboard</a>
+<a href="datasources.html">📁 Data Sources</a>
+<a href="reportbuilder.html">📄 Report Builder</a>
+<a href="analytics.html">📊 Analytics</a>
+<a href="team.html">👥 Team Management</a>
+<a href="billing.html">💳 Billing</a>
+<a href="settings.html" class="active">⚙ Settings</a>
+<a href="index.html">🚪 Logout</a>
+</div>
+
+</div>
+
+<div class="main">
+
+<div class="header">
+
+<div>
+<h1>Settings Center</h1>
+<p>Manage your profile, workspace, security and preferences</p>
+</div>
+
+<button class="btn" onclick="saveSettings()">
+Save Changes
+</button>
+
+</div>
+
+<div class="grid">
+
+<div>
+
+<!-- Profile -->
+
+<div class="card">
+
+<h2>Profile Overview</h2>
+
+<div class="profile">
+
+<div class="avatar" id="avatar">
+JS
+</div>
+
+<div>
+
+<h3 id="displayName">
+John Smith
+</h3>
+
+<p>
+Business Analyst
+</p>
+
+<span class="badge">
+Verified Account
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Workspace -->
+
+<div class="card">
+
+<h2>Workspace Settings</h2>
+
+<div class="form-group">
+<label>Organization Name</label>
+<input type="text" id="orgName" value="ABC Technologies">
+</div>
+
+<div class="form-group">
+<label>Website</label>
+<input type="text" id="website" value="www.abctech.com">
+</div>
+
+<div class="form-group">
+<label>Industry</label>
+<select id="industry">
+<option>Technology</option>
+<option>Finance</option>
+<option>Healthcare</option>
+<option>Retail</option>
+</select>
+</div>
+
+</div>
+
+<!-- Notifications -->
+
+<div class="card">
+
+<h2>Notification Center</h2>
+
+<div class="toggle-row">
+<span>Email Notifications</span>
+<label class="switch">
+<input type="checkbox" id="emailNotify" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+<div class="toggle-row">
+<span>Weekly Reports</span>
+<label class="switch">
+<input type="checkbox" id="weeklyReports" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+<div class="toggle-row">
+<span>Team Activity</span>
+<label class="switch">
+<input type="checkbox" id="teamActivity">
+<span class="slider"></span>
+</label>
+</div>
+
+</div>
+
+<!-- Appearance -->
+
+<div class="card">
+
+<h2>Appearance</h2>
+
+<div class="form-group">
+<label>Theme</label>
+<select id="theme">
+<option>Light</option>
+<option>Dark</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Layout Density</label>
+<select id="density">
+<option>Comfortable</option>
+<option>Compact</option>
+</select>
+</div>
+
+</div>
+
+</div>
+
+<div>
+
+<!-- Account Summary -->
+
+<div class="card">
+
+<h2>Account Summary</h2>
+
+<div class="summary-row">
+<span>Plan</span>
+<strong>Professional</strong>
+</div>
+
+<div class="summary-row">
+<span>Members</span>
+<strong>8 / 20</strong>
+</div>
+
+<div class="summary-row">
+<span>Storage</span>
+<strong>8.2 GB / 20 GB</strong>
+</div>
+
+<div class="summary-row">
+<span>Reports</span>
+<strong>156</strong>
+</div>
+
+</div>
+
+<!-- Security -->
+
+<div class="card">
+
+<h2>Security Center</h2>
+
+<div class="toggle-row">
+<span>Two Factor Authentication</span>
+<label class="switch">
+<input type="checkbox" id="twoFactor">
+<span class="slider"></span>
+</label>
+</div>
+
+<div class="toggle-row">
+<span>Login Alerts</span>
+<label class="switch">
+<input type="checkbox" id="loginAlerts" checked>
+<span class="slider"></span>
+</label>
+</div>
+
+<button class="btn" style="width:100%;margin-top:20px;">
+Change Password
+</button>
+
+</div>
+
+<!-- Privacy -->
+
+<div class="card">
+
+<h2>Data & Privacy</h2>
+
+<button class="btn" style="width:100%;margin-bottom:10px;">
+Export My Data
+</button>
+
+<button class="btn" style="width:100%;margin-bottom:10px;">
+Download Backup
+</button>
+
+<button class="danger-btn" style="width:100%;">
+Delete Workspace
+</button>
+
+</div>
+
+<!-- Activity -->
+
+<div class="card">
+
+<h2>Recent Activity</h2>
+
+<div id="activityLog" class="activity-log">
+<div class="activity-item">
+Settings Center loaded
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<!-- Password Modal -->
+
+<div id="passwordModal"
+style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.5);
+justify-content:center;
+align-items:center;
+z-index:999;
+">
+
+<div
+style="
+background:white;
+padding:30px;
+border-radius:20px;
+width:450px;
+max-width:95%;
+">
+
+<h2 style="margin-bottom:20px;">
+Change Password
+</h2>
+
+<input
+type="password"
+id="newPassword"
+placeholder="New Password"
+style="
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:10px;
+">
+
+<input
+type="password"
+id="confirmPassword"
+placeholder="Confirm Password"
+style="
+width:100%;
+padding:12px;
+margin-bottom:20px;
+border:1px solid #ddd;
+border-radius:10px;
+">
+
+<div style="display:flex;gap:10px;">
+
+<button
+class="btn"
+style="flex:1;"
+onclick="changePassword()">
+Update
+</button>
+
+<button
+class="btn"
+style="
+flex:1;
+background:#64748b;
+"
+onclick="closePasswordModal()">
+Cancel
+</button>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+/* =====================
+   Activity Logger
+===================== */
+
+function addActivity(message){
+
+const log =
+document.getElementById(
+"activityLog"
+);
+
+const item =
+document.createElement("div");
+
+item.className =
+"activity-item";
+
+item.innerHTML =
+new Date().toLocaleString()
++
+" - "
++
+message;
+
+log.prepend(item);
+
+}
+
+/* =====================
+   Load Settings
+===================== */
+
+window.addEventListener(
+"load",
+()=>{
+
+document.getElementById(
+"orgName"
+).value =
+localStorage.getItem(
+"orgName"
+) || "ABC Technologies";
+
+document.getElementById(
+"website"
+).value =
+localStorage.getItem(
+"website"
+) || "www.abctech.com";
+
+document.getElementById(
+"industry"
+).value =
+localStorage.getItem(
+"industry"
+) || "Technology";
+
+document.getElementById(
+"emailNotify"
+).checked =
+JSON.parse(
+localStorage.getItem(
+"emailNotify"
+)
+) ?? true;
+
+document.getElementById(
+"weeklyReports"
+).checked =
+JSON.parse(
+localStorage.getItem(
+"weeklyReports"
+)
+) ?? true;
+
+document.getElementById(
+"teamActivity"
+).checked =
+JSON.parse(
+localStorage.getItem(
+"teamActivity"
+)
+) ?? false;
+
+document.getElementById(
+"twoFactor"
+).checked =
+JSON.parse(
+localStorage.getItem(
+"twoFactor"
+)
+) ?? false;
+
+document.getElementById(
+"loginAlerts"
+).checked =
+JSON.parse(
+localStorage.getItem(
+"loginAlerts"
+)
+) ?? true;
+
+document.getElementById(
+"theme"
+).value =
+localStorage.getItem(
+"theme"
+) || "Light";
+
+document.getElementById(
+"density"
+).value =
+localStorage.getItem(
+"density"
+) || "Comfortable";
+
+applyTheme();
+
+addActivity(
+"Settings loaded"
+);
+
+});
+
+/* =====================
+   Save Settings
+===================== */
+
+function saveSettings(){
+
+localStorage.setItem(
+"orgName",
+document.getElementById(
+"orgName"
+).value
+);
+
+localStorage.setItem(
+"website",
+document.getElementById(
+"website"
+).value
+);
+
+localStorage.setItem(
+"industry",
+document.getElementById(
+"industry"
+).value
+);
+
+localStorage.setItem(
+"emailNotify",
+document.getElementById(
+"emailNotify"
+).checked
+);
+
+localStorage.setItem(
+"weeklyReports",
+document.getElementById(
+"weeklyReports"
+).checked
+);
+
+localStorage.setItem(
+"teamActivity",
+document.getElementById(
+"teamActivity"
+).checked
+);
+
+localStorage.setItem(
+"twoFactor",
+document.getElementById(
+"twoFactor"
+).checked
+);
+
+localStorage.setItem(
+"loginAlerts",
+document.getElementById(
+"loginAlerts"
+).checked
+);
+
+localStorage.setItem(
+"theme",
+document.getElementById(
+"theme"
+).value
+);
+
+localStorage.setItem(
+"density",
+document.getElementById(
+"density"
+).value
+);
+
+applyTheme();
+
+addActivity(
+"Settings saved"
+);
+
+alert(
+"Settings updated successfully"
+);
+
+}
+
+/* =====================
+   Theme Switcher
+===================== */
+
+function applyTheme(){
+
+const theme =
+document.getElementById(
+"theme"
+).value;
+
+if(theme==="Dark"){
+
+document.body.style.background =
+"#0f172a";
+
+document.body.style.color =
+"white";
+
+}else{
+
+document.body.style.background =
+"#f8fafc";
+
+document.body.style.color =
+"#111827";
+
+}
+
+}
+
+/* =====================
+   Security
+===================== */
+
+document
+.querySelector(
+'.card button'
+)
+?.addEventListener(
+'click',
+openPasswordModal
+);
+
+function openPasswordModal(){
+
+document.getElementById(
+"passwordModal"
+).style.display =
+"flex";
+
+}
+
+function closePasswordModal(){
+
+document.getElementById(
+"passwordModal"
+).style.display =
+"none";
+
+}
+
+function changePassword(){
+
+let pass =
+document.getElementById(
+"newPassword"
+).value;
+
+let confirm =
+document.getElementById(
+"confirmPassword"
+).value;
+
+if(pass===""){
+
+alert(
+"Enter password"
+);
+
+return;
+
+}
+
+if(pass.length < 6){
+
+alert(
+"Minimum 6 characters"
+);
+
+return;
+
+}
+
+if(pass !== confirm){
+
+alert(
+"Passwords do not match"
+);
+
+return;
+
+}
+
+localStorage.setItem(
+"userPassword",
+pass
+);
+
+addActivity(
+"Password changed"
+);
+
+alert(
+"Password updated"
+);
+
+closePasswordModal();
+
+}
+
+/* =====================
+   Auto Activity Tracking
+===================== */
+
+document
+.querySelectorAll(
+'input[type="checkbox"]'
+)
+.forEach(toggle=>{
+
+toggle.addEventListener(
+"change",
+function(){
+
+let label =
+this.parentElement
+.parentElement
+.querySelector("span")
+.innerText;
+
+addActivity(
+label +
+" updated"
+);
+
+});
+
+});
+
+/* =====================
+   Privacy Buttons
+===================== */
+
+document
+.querySelectorAll(
+".btn"
+)
+.forEach(btn=>{
+
+if(
+btn.innerText.includes(
+"Export My Data"
+)
+){
+
+btn.onclick = function(){
+
+addActivity(
+"User exported data"
+);
+
+alert(
+"Data export started"
+);
+
+};
+
+}
+
+if(
+btn.innerText.includes(
+"Download Backup"
+)
+){
+
+btn.onclick = function(){
+
+addActivity(
+"Backup downloaded"
+);
+
+alert(
+"Workspace backup generated"
+);
+
+};
+
+}
+
+});
+
+/* =====================
+   Delete Workspace
+===================== */
+
+document
+.querySelector(
+".danger-btn"
+)
+.onclick = function(){
+
+let confirmDelete =
+confirm(
+"Delete workspace permanently?"
+);
+
+if(confirmDelete){
+
+localStorage.clear();
+
+addActivity(
+"Workspace deleted"
+);
+
+alert(
+"Workspace removed"
+);
+
+}
+
+};
+
+/* =====================
+   Close Modal
+===================== */
+
+window.onclick =
+function(event){
+
+let modal =
+document.getElementById(
+"passwordModal"
+);
+
+if(event.target === modal){
+
+closePasswordModal();
+
+}
+
+};
+
+</script>
+
+</body>
+</html>
